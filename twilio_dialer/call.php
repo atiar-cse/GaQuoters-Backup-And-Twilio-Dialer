@@ -81,7 +81,7 @@ if (!empty($_POST['salesPhone']) ){
     // <project root dir>/.env.php
     $client = new Client( 'AC066a511bb63ec69c97f526417c2d02a1','2ff54d015f2fa68de36db38c8d63c0ef');
 
-    $outboundUri = "http://$host/outbound.php?sales_phone=$encodedSalesPhone&firstname=$firstname&lastname=$lastname&agent_id=$agent_id&lead_id=$lead_id";
+    $outboundUri = "http://$host/twilio_dialer/outbound.php?sales_phone=$encodedSalesPhone&firstname=$firstname&lastname=$lastname&agent_id=$agent_id&lead_id=$lead_id";
 
     try {
         $client->calls->create(

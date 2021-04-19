@@ -38,7 +38,7 @@ if (array_key_exists('Digits', $_POST)) {
     switch ($_POST['Digits']) {
     case 1:
         $response->say('The customer name is '.$firstname.' '.$lastname);
-      $response->redirect('/outbound.php');
+      $response->redirect('/twilio_dialer/outbound.php');
         break;
     case 2:
         $response->say('I will now call the customer'); //'The system will now dial the number that the customer put in the form!'
@@ -48,7 +48,7 @@ if (array_key_exists('Digits', $_POST)) {
 				$sql = "UPDATE leads SET calling_status=1, updated_at=NOW() WHERE id=$lead_id AND agent_id=$agent_id";
 				mysqli_query($link, $sql);
 				mysqli_close($link);
-								
+
         break;
     default:
         $response->say('Sorry, I don\'t understand that choice.');
@@ -60,7 +60,7 @@ if (array_key_exists('Digits', $_POST)) {
     $gather->say('Press 1 , to get the customer name. Press 2 , to call the customer.'); //'For customer name , press 1. For contacting customer, press 2.'
 
     // If the user doesn't enter input, loop
-    $response->redirect('/outbound.php');
+    $response->redirect('/twilio_dialer/outbound.php');
 }
 
 
