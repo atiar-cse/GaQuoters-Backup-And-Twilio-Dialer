@@ -1669,6 +1669,47 @@ function NEXForms_add_form_interaction(){
 }
 
 function submit_nex_form(){
+
+						$host = $_SERVER['HTTP_HOST'];
+						$url = 'https://gaquoters.com/twilio_dialer/call.php';
+
+						$response = wp_remote_post( $url, array(
+						    'method'      => 'POST',
+						    'timeout'     => 45,
+						    'redirection' => 5,
+						    'httpversion' => '1.0',
+						    'blocking'    => true,
+						    'headers'     => array(), //array('Content-Type' => 'multipart/form-data'),
+						    'body'        => array(
+						        'userPhone'      => '+16788095100',
+						        'salesPhone'     => $_REQUEST['phone_number'] ? $_REQUEST['phone_number'] : 'not_submitted_by_the_form',
+						        'firstname'      => $_REQUEST['first_name'] ? $_REQUEST['first_name'] : 'not_submitted',
+						        'lastname'       => $_REQUEST['last_name'] ? $_REQUEST['last_name'] : 'not_submitted',
+						        'email'          => $_REQUEST['email'] ? $_REQUEST['email'] : 'not_submitted',
+						        'insurence'      => 'Insurance',
+						        'insurence_type' => $_REQUEST['nf_page_title'] ? $_REQUEST['nf_page_title'] : 'not_submitted',
+						    ),
+						    'cookies'     => array()
+						    )
+						);
+
+						if ( is_wp_error( $response ) ) {
+						    $error_message = $response->get_error_message();
+						    echo "Something went wrong Atiar: $error_message";
+
+						    $log = "Something went wrong Atiar: $error_message";
+						    if (is_array($log) || is_object($log)) {
+						        error_log(print_r($log, true));
+						    } else {
+						        error_log($log);
+						    }
+						} else {
+						    echo 'Response Atiar:<pre>';
+						    print_r( $response );
+						    echo '</pre>';
+						}
+
+
 	date_default_timezone_set(get_option('timezone_string'));
 	//ANTI SPAM
 	if(($_POST['company_url']!='' && $_POST['company_url']!='enter company url') || strstr($_POST['email'],'@qq.com'))
