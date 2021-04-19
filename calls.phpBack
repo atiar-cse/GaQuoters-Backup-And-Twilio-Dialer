@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calls - GA Quoters</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Insurance Client Leads (Twilio Calls)</h2>
+        </div>
+        <div class="col-md-12">
+
+          <table id="example" class="table table-striped table-bordered" style="width:100%">
+                  <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Twilio Phones</th>
+                        <th>Client Phone</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Insurance</th>
+                        <th>Insurance Type</th>
+                        <th>Call Status</th>
+                        <!-- <th>Agent</th> -->
+                        <th>Date and Time</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+<?php
+    $link = mysqli_connect("localhost", "gaquoter_agents", "Dvv9(x()6{^Y", "gaquoter_agents");
+    $result = mysqli_query($link, "SELECT * from leads order by id DESC");
+    if(mysqli_num_rows($result) > 0){
+
+        while($row = mysqli_fetch_array($result)){ ?>
+
+          <tr>
+            <td> <?php echo $row['id']; ?> </td>
+            <td> <?php echo $row['twilio_phone']; ?> <br> <?php echo $row['user_phone']; ?> </td>
+            <td> <?php echo $row['sales_phone']; ?> </td>
+            <td> <?php echo $row['first_name'] ." ". $row['last_name']; ?> </td>
+            <td> <?php echo $row['email']; ?> </td>
+            <td> <?php echo $row['insurence']; ?> </td>
+            <td> <?php echo $row['insurence_type']; ?> </td>
+            <td>
+                <?php
+                  if($row['calling_status']==1){
+                    echo '<span class="label label-success">Done</span>';
+                  } else {
+                    echo '<span class="label label-danger">Pending</span>';
+                  }
+                ?>
+              </td>
+            <!-- <td> Agent </td> -->
+            <td>
+                Created: <?php echo $row['created_at']; ?><br>
+                Updated: <?php echo $row['updated_at']; ?>
+            </td>
+          </tr>
+
+        <?php }
+    }
+    mysqli_close($link);
+?>
+
+                  </tbody>
+                  <tfoot>
+                      <tr>
+                          <th>#</th>
+                          <th>Twilio Phones</th>
+                          <th>Client Phone</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Insurance</th>
+                          <th>Insurance Type</th>
+                          <th>Call Status</th>
+                          <!-- <th>Agent</th> -->
+                          <th>Date and Time</th>
+                      </tr>
+                  </tfoot>
+              </table>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"> </script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"> </script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"> </script>
+<script>
+  $(document).ready(function() {
+      $('#example').DataTable({
+          "order": [[ 0, "desc" ]]
+      });
+  } )
+</script>
+
+
+</body>
+</html>

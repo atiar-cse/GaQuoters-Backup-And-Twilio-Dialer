@@ -1,0 +1,8 @@
+ # For domain: https://gaquoters.com/
+# Last updated: 2/20/2020
+
+User-agent: *
+
+
+
+Sitemap: https://gaquoters.com/sitemap.xml

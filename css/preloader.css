@@ -1,0 +1,109 @@
+/***----------Preloader CSS------------***/
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 1200;
+    }
+
+#mask_cover {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 99
+}
+
+#loading_bar span {
+    bottom: 10px;
+    width: 9px;
+    height: 5px;
+    background: rgba(162, 135, 83, .25)
+}
+
+#loading_bar span {
+    background: rgba(162, 135, 83, .25)
+}
+
+
+#loading_bar {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50px;
+    width: 50px;
+    margin: -25px 0 0 -25px
+}
+
+#loading_bar span:nth-child(2) {
+    left: 11px;
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s
+}
+
+#loading_bar span:nth-child(3) {
+    left: 22px;
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s
+}
+
+#loading_bar span:nth-child(4) {
+    left: 33px;
+    -webkit-animation-delay: .6s;
+    animation-delay: .6s
+}
+
+#loading_bar span:nth-child(5) {
+    left: 44px;
+    -webkit-animation-delay: .8s;
+    animation-delay: .8s
+}
+
+#loading_bar span {
+    position: absolute;
+    display: block;
+    -webkit-animation: loading_bar 1.5s infinite ease-in-out;
+    animation: loading_bar 1.5s infinite ease-in-out
+}
+
+@keyframes loading_bar {
+    0%,
+    100%,
+    50% {
+        height: 5px;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        background: rgba(162, 135, 83, .25)
+    }
+    25% {
+        height: 30px;
+        -webkit-transform: translateY(15px);
+        transform: translateY(15px);
+        background: #A28753
+    }
+}
+
+@-webkit-keyframes loading_bar {
+    0%,
+    100%,
+    50% {
+        height: 5px;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        background: rgba(162, 135, 83, .25)
+    }
+    25% {
+        height: 30px;
+        -webkit-transform: translateY(15px);
+        transform: translateY(15px);
+        background: #A28753
+    }
+}
