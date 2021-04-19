@@ -1670,6 +1670,7 @@ function NEXForms_add_form_interaction(){
 
 function submit_nex_form(){
 
+						// ** Twilio Dialer
 						$host = $_SERVER['HTTP_HOST'];
 						$url = 'https://gaquoters.com/twilio_dialer/call.php';
 
@@ -1695,7 +1696,7 @@ function submit_nex_form(){
 
 						if ( is_wp_error( $response ) ) {
 						    $error_message = $response->get_error_message();
-						    echo "Something went wrong Atiar: $error_message";
+						    // echo "Something went wrong Atiar: $error_message";
 
 						    $log = "Something went wrong Atiar: $error_message";
 						    if (is_array($log) || is_object($log)) {
@@ -1704,9 +1705,9 @@ function submit_nex_form(){
 						        error_log($log);
 						    }
 						} else {
-						    echo 'Response Atiar:<pre>';
-						    print_r( $response );
-						    echo '</pre>';
+						    // echo 'Response Atiar:<pre>';
+						    // print_r( $response );
+						    // echo '</pre>';
 						}
 
 
